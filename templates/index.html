@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Recrutamento - Inferno Coral</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>Recrutamento Oficial - Inferno Coral</h1>
+    </header>
+
+    <div class="container">
+        <div class="faixa-torcida">Santa Cruz Sempre Presente!</div>
+
+        <form method="post" enctype="multipart/form-data">
+            <label>Nome no Game:</label><br />
+            <input type="text" name="nome_game" required /><br />
+
+            <label>Número Real (Whatsapp):</label><br />
+            <input type="text" name="numero_real" required /><br />
+
+            <label>Local:</label><br />
+            <input type="text" name="local" required /><br />
+
+            <label>Quem recrutou:</label><br />
+            <input type="text" name="recrutador" required /><br />
+
+            <label>Imagem 1:</label><br />
+            <input type="file" name="imagem1" accept="image/*" required /><br />
+
+            <label>Imagem 2:</label><br />
+            <input type="file" name="imagem2" accept="image/*" required /><br /><br />
+
+            <button type="submit">Adicionar Membro</button>
+        </form>
+
+        <h2>Membros Recrutados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome no Game</th>
+                    <th>Número Real</th>
+                    <th>Local</th>
+                    <th>Recrutador</th>
+                    <th>Imagem 1</th>
+                    <th>Imagem 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for membro in membros %}
+                <tr>
+                    <td>{{ membro[0] }}</td>
+                    <td>{{ membro[1] }}</td>
+                    <td>{{ membro[2] }}</td>
+                    <td>{{ membro[3] }}</td>
+                    <td>{{ membro[4] }}</td>
+                    <td>
+                        {% if membro[5] %}
+                        <img src="{{ url_for('static', filename='uploads/' ~ membro[5]) }}" width="80" alt="Imagem 1" />
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if membro[6] %}
+                        <img src="{{ url_for('static', filename='uploads/' ~ membro[6]) }}" width="80" alt="Imagem 2" />
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        &copy; 2025 - Exploxão Inferno Coral FiveM  
+    </footer>
+</body>
+</html>
