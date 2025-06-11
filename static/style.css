@@ -100,7 +100,7 @@ footer {
 
 .faixa-torcida {
     background: linear-gradient(to right, #ff0000, white, #000000);
-    color: white;
+    color: black;
     text-align: center;
     font-weight: bold;
     padding: 10px;
